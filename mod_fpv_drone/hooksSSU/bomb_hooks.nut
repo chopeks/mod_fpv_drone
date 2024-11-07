@@ -18,21 +18,20 @@ foreach (b in bombs) {
             if (this.Math.rand(1,3) != 2 && ::ModFPVDrone.SuicideMode) {
                 _user.getItems().unequip(_user.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory));
             }
+            // consume ammo instead of unequipping grenade
+            _user.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).consumeAmmo();
 
-            local bomb = _user.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
-            bomb.consumeAmmo();
             this.Time.scheduleEvent(this.TimeUnit.Real, 250, this.onApply.bindenv(this), {
                 Skill = this,
                 User = _user,
-                TargetTile = _targetTile
+                TargetTiles = this.getAffectedTiles(_targetTile, _user)
             });
         }
 
         q.isHidden = @(__original) function () {
-            local bomb = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
             if(__original())
                 return true;
-            return bomb.getAmmo() == 0;
+            return getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).getAmmo() == 0;
         }
     });
 }
