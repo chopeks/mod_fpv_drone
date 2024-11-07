@@ -14,6 +14,8 @@ mod.require("mod_msu >= 1.2.6", "mod_modern_hooks >= 0.4.0", "mod_legends >= 18.
 
 mod.queue(">mod_msu", ">mod_modern_hooks", ">mod_legends", ">mod_sellswords", function() {
     ::ModFPVDrone.Mod <- ::MSU.Class.Mod(::ModFPVDrone.ID, ::ModFPVDrone.Version, ::ModFPVDrone.Name);
+    ::ModFPVDrone.Mod.Registry.addModSource(::MSU.System.Registry.ModSourceDomain.GitHub, "https://github.com/chopeks/mod_fpv_drone");
+    ::ModFPVDrone.Mod.Registry.setUpdateSource(::MSU.System.Registry.ModSourceDomain.GitHub);
 
     local page = ::ModFPVDrone.Mod.ModSettings.addPage("General");
     local settingFalconMode = page.addEnumSetting(
