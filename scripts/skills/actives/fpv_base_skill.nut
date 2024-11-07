@@ -25,18 +25,7 @@ this.fpv_base_skill <- this.inherit("scripts/skills/skill", {
         this.m.IsProjectileRotated = false;
     }
 
-    function onVerifyTarget( _originTile, _targetTile )
-    {
-//        if (!this.skill.onVerifyTarget(_originTile, _targetTile))
-//        {
-//            return false;
-//        }
-//
-//        if (_originTile.Level + 1 < _targetTile.Level)
-//        {
-//            return false;
-//        }
-
+    function onVerifyTarget(_originTile, _targetTile) {
         return true;
     }
 
@@ -50,7 +39,8 @@ this.fpv_base_skill <- this.inherit("scripts/skills/skill", {
             if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference) {
                 dir = ownTile.getDirectionTo(forwardTile);
                 forwardTile = forwardTile.getNextTile(dir);
-                if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference) ret.push(forwardTile);
+                if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+                    ret.push(forwardTile);
             }
         }
         for (local i = 0; i != 6; i++) {
@@ -61,6 +51,24 @@ this.fpv_base_skill <- this.inherit("scripts/skills/skill", {
         }
         return ret;
     }
+
+    function getAffectedTile (_targetTile, _user) {
+        local ret = [];
+        local ownTile = _user.getTile();
+        local dir = ownTile.getDirectionTo(_targetTile);
+        local forwardTile = null;
+        if (_targetTile.hasNextTile(dir)) {
+            forwardTile = _targetTile.getNextTile(dir);
+            if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference) {
+                dir = ownTile.getDirectionTo(forwardTile);
+                forwardTile = forwardTile.getNextTile(dir);
+                if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+                    ret.push(forwardTile);
+            }
+        }
+        return ret;
+    }
+
 
     function onTargetSelected( _targetTile ) {
         local affectedTiles = this.getAffectedTiles(_targetTile, this.getContainer().getActor());

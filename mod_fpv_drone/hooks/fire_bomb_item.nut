@@ -4,5 +4,8 @@
         this.addSkill(this.new("scripts/skills/actives/fpv_throw_fire_bomb_skill"));
         this.addSkill(this.new("scripts/skills/actives/fpv_throw_smoke_bomb_skill"));
         this.addSkill(this.new("scripts/skills/actives/fpv_throw_daze_bomb_skill"));
+        this.addSkill(this.new("scripts/skills/actives/fpv_throw_holy_water_skill"));
+        this.addSkill(this.new("scripts/skills/actives/fpv_throw_acid_flask_skill"));
+        this.addSkill(this.new("scripts/skills/actives/fpv_throw_acid_flask_02_skill"));
     }
 });

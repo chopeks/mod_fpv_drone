@@ -1,7 +1,7 @@
 ::ModFPVDrone <- {
     ID = "mod_fpv_drone",
     Name = "Falcons with grenades",
-    Version = "0.1.1",
+    Version = "0.2.0",
     SuicideMode = true,
     MoreFalcons = false,
     // other mods compat

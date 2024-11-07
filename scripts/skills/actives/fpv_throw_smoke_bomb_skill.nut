@@ -5,7 +5,7 @@ this.fpv_throw_smoke_bomb_skill <- this.inherit("scripts/skills/actives/fpv_base
 		this.fpv_base_skill.create();
 		this.m.ID = "actives.fpv_throw_smoke_bomb";
 		this.m.Name = "Falcon Smoke Pot";
-		this.m.Description = "Use your falcon to drop a  a pot filled with substances that upon impact will quickly create a dense cloud.";
+		this.m.Description = "Use your falcon to drop a pot filled with substances that upon impact will quickly create a dense cloud.";
 		this.m.Icon = "skills/fpv_active_208.png";
 		this.m.IconDisabled = "skills/fpv_active_208_sw.png";
 		this.m.Overlay = "active_208";
